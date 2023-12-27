@@ -82,7 +82,7 @@ configuration.api_key['queryApiKey'] = os.environ["API_KEY"]
 
 
 # Enter a context with an instance of the API client
-with mapy_cz_routing.ApiClient(configuration) as api_client:
+async with mapy_cz_routing.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = mapy_cz_routing.RoutingApi(api_client)
     start = [14.40094,50.0711] # object | Coordinates of the beginning of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?start=14.40094&start=50.0711`` and unexploded ``?start=14.40094,50.0711`` format.
@@ -95,7 +95,7 @@ with mapy_cz_routing.ApiClient(configuration) as api_client:
 
     try:
         # Basic Route
-        api_response = api_instance.basic_route_v1_routing_route_get(start, end, route_type, lang=lang, format=format, avoid_toll=avoid_toll, waypoints=waypoints)
+        api_response = await api_instance.basic_route_v1_routing_route_get(start, end, route_type, lang=lang, format=format, avoid_toll=avoid_toll, waypoints=waypoints)
         print("The response of RoutingApi->basic_route_v1_routing_route_get:\n")
         pprint(api_response)
     except ApiException as e:

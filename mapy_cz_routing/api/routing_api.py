@@ -48,7 +48,7 @@ class RoutingApi:
 
 
     @validate_call
-    def basic_route_v1_routing_route_get(
+    async def basic_route_v1_routing_route_get(
         self,
         start: Annotated[Any, Field(description="Coordinates of the beginning of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?start=14.40094&start=50.0711`` and unexploded ``?start=14.40094,50.0711`` format.")],
         end: Annotated[Any, Field(description="Coordinates of the end of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?end=14.40094&end=50.0711`` and unexploded ``?end=14.40094,50.0711`` format.")],
@@ -131,11 +131,11 @@ class RoutingApi:
             '404': "RoutingErrorResponse",
             '422': "HTTPValidationError",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -143,7 +143,7 @@ class RoutingApi:
 
 
     @validate_call
-    def basic_route_v1_routing_route_get_with_http_info(
+    async def basic_route_v1_routing_route_get_with_http_info(
         self,
         start: Annotated[Any, Field(description="Coordinates of the beginning of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?start=14.40094&start=50.0711`` and unexploded ``?start=14.40094,50.0711`` format.")],
         end: Annotated[Any, Field(description="Coordinates of the end of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?end=14.40094&end=50.0711`` and unexploded ``?end=14.40094,50.0711`` format.")],
@@ -226,11 +226,11 @@ class RoutingApi:
             '404': "RoutingErrorResponse",
             '422': "HTTPValidationError",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -238,7 +238,7 @@ class RoutingApi:
 
 
     @validate_call
-    def basic_route_v1_routing_route_get_without_preload_content(
+    async def basic_route_v1_routing_route_get_without_preload_content(
         self,
         start: Annotated[Any, Field(description="Coordinates of the beginning of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?start=14.40094&start=50.0711`` and unexploded ``?start=14.40094,50.0711`` format.")],
         end: Annotated[Any, Field(description="Coordinates of the end of the route. An array of two float numbers. The first number is ``longitude``, the second is ``latitude``. Supports exploded ``?end=14.40094&end=50.0711`` and unexploded ``?end=14.40094,50.0711`` format.")],
@@ -321,7 +321,7 @@ class RoutingApi:
             '404': "RoutingErrorResponse",
             '422': "HTTPValidationError",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
